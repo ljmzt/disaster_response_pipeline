@@ -1,14 +1,27 @@
 # Disaster Response Pipeline Project
 
-### Instructions:
-1. Run the following commands in the project's root directory to set up your database and model.
+### Purpose 
+This is Udacity Data Scientist Nano-degree Project. The purpose is 1) to learn how to set up pipeline 2) to classify disaster message into multilabel categories. The raw data is provided from Appen (formally Figure 8).
 
-    - To run ETL pipeline that cleans data and stores in database
-        `python data/process_data.py data/disaster_messages.csv data/disaster_categories.csv data/DisasterResponse.db`
-    - To run ML pipeline that trains classifier and saves
-        `python models/train_classifier.py data/DisasterResponse.db models/classifier.pkl`
+### Main Files
+data/process_data.py: script to perform the ETL task.  
+data/disaster_categories.csv, disaster_messages.csv: raw data  
+data/data_for_ml.db: output from the ETL process  
 
-2. Run the following command in the app's directory to run your web app.
-    `python run.py`
+models/train_classifier.py: script to generate the file model
+models/test-preprocess.ipynb, fit-model-fit-individual-v2.ipynb: two simpler models; see technical points below
+models/
 
-3. Go to http://0.0.0.0:3001/
+### Summaries of Results
+
+### Main technical points
+1. 
+
+### Libraries used
+* python==3.9.13
+* pandas==1.4.0
+* numpy==1.23.3
+* matplotlib==3.5.1
+* seaborn==0.11.2
+* scipy==1.9.1
+* scikit-learn==1.0.2
