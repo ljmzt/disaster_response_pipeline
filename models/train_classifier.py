@@ -11,6 +11,9 @@ from sklearn.linear_model import LogisticRegression
 from flat_cv import FlatCV
 
 def load_data(database_filepath):
+    '''
+      load from the database
+    '''
     conn = sqlite3.connect(database_filepath)
     df = pd.read_sql('SELECT * FROM messages', con=conn)
     conn.close()
@@ -22,6 +25,13 @@ def tokenize(text):
 
 
 def build_model(cols):
+    '''
+      the model itself has 3 steps:
+        preprocess: turn word into numbers, here i use a simpler CountVectorizer
+        classifier: this is a classifier i coded myself, which allows tuning for each label
+        stack: after classifying for each label, add an L1 logistic regression to take into account dependecies between labels
+      the FlatCV turns the pipeline into a cross-valiation model
+    '''
     preprocess_pipe = ColumnTransformer([
         ('message', CountVectorizer(tokenizer=str.split,
                                     token_pattern=None,
@@ -59,6 +69,9 @@ def build_model(cols):
 
 
 def evaluate_model(model, df_test, category_names):
+    '''
+      output some classification report
+    '''
     Y_pred = model.predict(df_test)
     Y_true = df_test[category_names].values
     for icol, category_name in enumerate(category_names):

@@ -3,6 +3,9 @@ import pandas as pd
 import sqlite3
 
 def load_data(messages_filepath, categories_filepath):
+    '''
+      load and simply concat the two csv files
+    '''
     messages = pd.read_csv(messages_filepath)
     categories = pd.read_csv(categories_filepath)
     messages.drop_duplicates(subset=['id'], keep=False, inplace=True)
@@ -13,6 +16,9 @@ def load_data(messages_filepath, categories_filepath):
     return df
 
 def clean_data(df):
+    '''
+      parse the categories
+    '''
     tmp = df['categories'].str.split(';', expand=True)
     tmp.columns = [x.split('-')[0] for x in tmp.iloc[0].values]
     for col in tmp.columns:
@@ -22,6 +28,9 @@ def clean_data(df):
 
 
 def save_data(df, database_filename):
+    '''
+      save it to a db
+    '''
     conn = sqlite3.connect(database_filename)
     df.to_sql('messages', con = conn, if_exists='replace', index=False)
     conn.commit()
