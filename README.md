@@ -21,7 +21,7 @@ The final model is too slow to upload to github for me, so I uploaded it to [goo
 ### Main technical points in modeling
 1. For the 'related' label, I combine class 0 and 2 into one class. There're actually only very few class 2 records, so should be fine. Now the problem is a pretty standard multioutput/multilabel binary classification problem
 
-2. Existing multioutput libary in sklearn doesn't allow fine tuning for each label, so I have to code it up myself. The key codes are flat_classifier.py and fit-model-fit-individual-v2.ipynb. This can improve the macro-f1 score from 0.473 to 0.483. I also tested adding an L1-norm Logistic Regression after the classifier. It is not quite useful (0.484 vs 0.484), but it does improve the f1-score on some difficult labels (e.g. tools, shops). See compare.ipynb for detail comparison. 
+2. Existing multioutput libary in sklearn doesn't allow fine tuning for each label, so I have to code it up myself. The key codes are flat_classifier.py and fit-model-fit-individual-v2.ipynb. This can improve the macro-f1 score from 0.473 to 0.483. I also tested adding an L1-norm Logistic Regression after the classifier. It is not quite useful (0.484 vs 0.484), but it does improve the f1-score on some difficult labels (e.g. tools, shops). See compare.ipynb for detail comparison. In all models, a stratified-cv is used to handle the imbalanced problem. 
 
 3. In the test-preprocess.ipynb, I compare somewhat different preprocessing strategies. To my surprise, doing TfIdf is not useful at all. I also tested adding a language detector, but that is also not that useful. So I stick with countvectorize, with some less frequent words removed. See the notebook for details.
 
