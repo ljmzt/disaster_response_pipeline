@@ -16,6 +16,8 @@ models/model_utils.py, cv_result_analyzer.py: helper functions
 
 app/: contain the necessary py and html files to display the website  
 
+The final model is too slow to upload to github for me, so I uploaded it to [google drive](https://drive.google.com/file/d/1AXjRJpRY_uk9FHfmOUvXs_H8eXwZJ8SF/view?usp=drive_link). Please put in under models/ folder if you would like to run the website. 
+
 ### Main technical points in modeling
 1. For the 'related' label, I combine class 0 and 2 into one class. There're actually only very few class 2 records, so should be fine. Now the problem is a pretty standard multioutput/multilabel binary classification problem
 
