@@ -8,9 +8,13 @@ data/process_data.py: script to perform the ETL task.
 data/disaster_categories.csv, disaster_messages.csv: raw data  
 data/data_for_ml.db: output from the ETL process  
 
-models/train_classifier.py: script to generate the file model
-models/test-preprocess.ipynb, fit-model-fit-individual-v2.ipynb: two simpler models; see technical points below
-models/
+models/train_classifier.py: script to generate the file model  
+models/test-preprocess.ipynb, fit-model-fit-individual-v2.ipynb: two simpler models; see technical points below  
+models/compare.ipynb: compare different models  
+models/flat_cv.py flat_classifier.py: script for flat classifier and CV  
+models/model_utils.py, cv_result_analyzer.py: helper functions  
+
+app: contain the necessary py and html files to display the website  
 
 ### Summaries of Results
 
